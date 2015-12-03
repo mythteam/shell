@@ -5,7 +5,7 @@ softPkg=$soft.tar.gz
 
 
 # install pcre for nginx
-cd /root/soft
+cd /usr/local/src
 wget http://sourceforge.net/projects/pcre/files/pcre/8.35/pcre-8.35.tar.gz
 tar zxvf pcre-8.35.tar.gz
 cd pcre-8.35
@@ -18,11 +18,11 @@ make install
 groupadd www
 useradd -g www www -s /bin/false
 
-cd /root/soft/
+cd /usr/local/src/
 wget http://nginx.org/download/$softPkg
 tar zxvf $softPkg
-cd /root/soft/$soft
-./configure --prefix=/usr/local/nginx --without-http_memcached_module --user=www --group=www --with-http_stub_status_module --with-openssl=/usr/ --with-pcre=/root/soft/pcre-8.35
+cd /usr/local/src/$soft
+./configure --prefix=/usr/local/nginx --without-http_memcached_module --user=www --group=www --with-http_stub_status_module --with-openssl=/usr/ --with-pcre=/usr/local/src/pcre-8.35
 make
 make install
 
@@ -111,7 +111,7 @@ chkconfig nginx on
 # nginx start: service nginx start
 # nginx stop: service nginx stop
 # nginx restart: service nginx restart
-# 
+#
 #
 #
 #

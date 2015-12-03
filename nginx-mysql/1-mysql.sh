@@ -4,14 +4,14 @@ soft=mysql-5.6.26
 softPkg=$soft.tar.gz
 
 
-# install mysql 
+# install mysql
 groupadd mysql
 useradd -g mysql mysql -s /bin/false
 mkdir -p /data/mysql
 chown -R mysql:mysql /data/mysql
 mkdir -p /usr/local/mysql
 
-cd /root/soft/
+cd /usr/local/src/
 wget http://mirrors.sohu.com/mysql/MySQL-5.6/$softPkg
 tar zxvf $softPkg
 cd $soft
@@ -32,17 +32,17 @@ ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
 
 ######################
 # vi /etc/my.cnf in [mysqld] section
-# datadir = /data/mysql 
+# datadir = /data/mysql
 # Then go to /usr/local/mysql and execute
 # cd /usr/local/mysql
 # ./scripts/mysql_install_db --user=mysql #Generate mysql system database
-# 
+#
 #
 # vi /etc/rc.d/init.d/mysqld #edit
 # basedir = /usr/local/mysql #MySQL installation path
 # datadir = /data/mysql #MySQl database data path
-# 
-# 
+#
+#
 ######################
 
 ######################
