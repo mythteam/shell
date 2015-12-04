@@ -108,6 +108,10 @@ chkconfig nginx on
 
 ######################
 #
+# close server tokens:
+#
+# server_tokens off;
+#
 # nginx start: service nginx start
 # nginx stop: service nginx stop
 # nginx restart: service nginx restart
