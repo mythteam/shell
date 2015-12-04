@@ -105,11 +105,16 @@ exit $RETVAL
 chmod 775 /etc/rc.d/init.d/nginx
 chkconfig nginx on
 
+#copy files
+dir=`pwd`
+mkdir -p /usr/local/nginx/conf/vhosts
+
+cp $dir/../scripts/gzip.conf /usr/local/nginx/conf
+cp $dir/../scripts/website.conf /usr/local/nginx/conf/vhosts
 
 ######################
 #
 # close server tokens:
-#
 # server_tokens off;
 #
 # nginx start: service nginx start
