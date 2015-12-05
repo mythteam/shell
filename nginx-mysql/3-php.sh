@@ -22,7 +22,39 @@ tar zxvf $softPkg
 cd /usr/local/src/$soft
 mkdir -p /usr/local/php
 
-./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/local/mysql --with-mysqli=/usr/local/mysql/bin/mysql_config --with-mysql-sock=/tmp/mysql.sock --with-pdo-mysql --with-freetype-dir --with-png-dir --with-jpeg-dir --with-zlib --with-iconv --with-zlib --enable-xml --enable-bcmath --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --with-pear --with-gettext --enable-session --with-mcrypt --with-curl --disable-fileinfo --enable-opcache --enable-cli
+./configure --prefix=/usr/local/php \
+--with-config-file-path=/usr/local/php/etc \
+--with-mysql=/usr/local/mysql \
+--with-mysqli=/usr/local/mysql/bin/mysql_config \
+--with-pdo-mysql \
+--with-freetype-dir \
+--with-png-dir \
+--with-jpeg-dir \
+--with-zlib \
+--with-iconv \
+--with-zlib \
+--enable-xml \
+--enable-bcmath \
+--enable-sysvsem \
+--enable-inline-optimization \
+--with-curl \
+--enable-mbregex \
+--enable-fpm \
+--enable-mbstring \
+--with-openssl \
+--enable-pcntl \
+--enable-sockets \
+--with-xmlrpc \
+--enable-zip \
+--enable-soap \
+--with-pear \
+--with-gettext \
+--enable-session \
+--with-mcrypt \
+--with-curl \
+--disable-fileinfo \
+--enable-opcache \
+--enable-cli
 
 make
 make install
@@ -57,9 +89,6 @@ chkconfig php-fpm on
 # php-fpm start: /usr/local/php/sbin/php-fpm
 # php-fpm stop: /etc/rc.d/init.d/php-fpm stop
 # php-fpm restart: /etc/rc.d/init.d/php-fpm restart
-#
-#
-#
 #
 ######################
 

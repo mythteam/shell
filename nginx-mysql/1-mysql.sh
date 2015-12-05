@@ -28,7 +28,7 @@ chkconfig mysqld on
 
 ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
 ln -s /usr/local/mysql/include/mysql /usr/include/mysql
-ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+#ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
 
 ######################
 # vi /etc/my.cnf in [mysqld] section
@@ -52,7 +52,5 @@ ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
 # mysql restart: service mysqld restart
 #
 # /usr/local/mysql/bin/mysqladmin -u root -p password "123456" #change root password
-#
-#
 #
 ######################

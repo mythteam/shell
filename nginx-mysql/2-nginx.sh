@@ -22,7 +22,14 @@ cd /usr/local/src/
 wget http://nginx.org/download/$softPkg
 tar zxvf $softPkg
 cd /usr/local/src/$soft
-./configure --prefix=/usr/local/nginx --without-http_memcached_module --user=www --group=www --with-http_stub_status_module --with-openssl=/usr/ --with-pcre=/usr/local/src/pcre-8.35
+./configure --prefix=/usr/local/nginx \
+--without-http_memcached_module \
+--user=www \
+--group=www \
+--with-http_stub_status_module \
+--with-openssl=/usr/ \
+--with-pcre=/usr/local/src/pcre-8.35
+
 make
 make install
 
@@ -109,8 +116,63 @@ chkconfig nginx on
 dir=`pwd`
 mkdir -p /usr/local/nginx/conf/vhosts
 
-cp $dir/../scripts/gzip.conf /usr/local/nginx/conf
-cp $dir/../scripts/website.conf /usr/local/nginx/conf/vhosts
+cat >> /usr/local/nginx/conf/gzip.conf <<EOF
+gzip          on;
+gzip_min_length     1024;
+gzip_comp_level     5;
+gzip_buffers        8 16k;
+gzip_http_version   1.1;
+gzip_proxied        any;
+gzip_types        text/plain text/javascript application/x-javascript text        /css text/xml application/xml application/atom-xml application/rss-xml a        pplication/xhtml-xml image/svg-xml text/x-json application/json;
+gzip_disable        "msie6";
+EOF
+
+cat >> /usr/local/nginx/conf/vhosts/website.conf <<EOF
+server {
+    listen  80;
+    server_name  www.lxpgw.com;
+    root  /home/www.lxpgw.com/frontend/web;
+    index index.php;
+    charset utf-8;
+
+    error_log logs/www.lxpgw.com.log;
+
+    location / {
+      try_files $uri $uri/ /index.php?$args;
+    }
+
+    error_page   404  /pages/404.html;
+
+    error_page   500 502 503 504  /50x.html;
+    #location = /50x.html {
+      #root html;
+    #}
+    if ($http_user_agent ~* (YYSpider)) {
+       return 403;
+    }
+    location ~ \.(js|css|png|jpg|gif|ico|pdf|mov|fla|zip|rar|ttf|woff|woff2|eot|svg|otf|tpl|json)$ {
+      add_header Access-Control-Allow-Origin *;
+      #try_files $uri = 404;
+    }
+
+    location ~ \.php$ {
+      try_files $uri = 404;
+      fastcgi_pass  127.0.0.1:9000;
+      fastcgi_index index.php;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      include   fastcgi_params;
+    }
+
+    location ~ /\.(ht|svn|git) {
+      deny all;
+    }
+    location ~ ^/status$ {
+      include fastcgi_params;
+      fastcgi_pass 127.0.0.1:9000;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+EOF
 
 ######################
 #
