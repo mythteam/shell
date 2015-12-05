@@ -5,6 +5,7 @@ version=3.1.1
 fullname=$name-$version
 softPkg=$fullname.tar.gz
 
+yum -y install ImageMagick-devel
 
 # install
 cd /usr/local/src

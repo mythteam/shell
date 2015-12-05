@@ -1,14 +1,14 @@
 #!/bin/bash
 
 dest=/usr/local/src
-icu=icu4c-56_1-RHEL6-x64.tgz
+icu=icu4c-56_1-src.tgz
 intlVer=intl-3.0.0
 intl=$intlVer.tgz
 
 # install
 cd $dest
 
-wget https://raw.githubusercontent.com/mythteam/shell/master/pkgs/icu4c-56_1-RHEL6-x64.tgz
+wget http://download.icu-project.org/files/icu4c/56.1/$icu
 wget https://raw.githubusercontent.com/mythteam/shell/master/pkgs/intl-3.0.0.tgz
 
 # install icu

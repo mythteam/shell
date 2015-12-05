@@ -127,7 +127,7 @@ gzip_types        text/plain text/javascript application/x-javascript text      
 gzip_disable        "msie6";
 EOF
 
-cat >> /usr/local/nginx/conf/vhosts/website.conf <<EOF
+echo '
 server {
     listen  80;
     server_name  www.lxpgw.com;
@@ -144,12 +144,7 @@ server {
     error_page   404  /pages/404.html;
 
     error_page   500 502 503 504  /50x.html;
-    #location = /50x.html {
-      #root html;
-    #}
-    if ($http_user_agent ~* (YYSpider)) {
-       return 403;
-    }
+
     location ~ \.(js|css|png|jpg|gif|ico|pdf|mov|fla|zip|rar|ttf|woff|woff2|eot|svg|otf|tpl|json)$ {
       add_header Access-Control-Allow-Origin *;
       #try_files $uri = 404;
@@ -171,8 +166,7 @@ server {
       fastcgi_pass 127.0.0.1:9000;
       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
-}
-EOF
+}' > /usr/local/nginx/conf/vhosts/website.conf
 
 ######################
 #
@@ -182,8 +176,6 @@ EOF
 # nginx start: service nginx start
 # nginx stop: service nginx stop
 # nginx restart: service nginx restart
-#
-#
 #
 #
 ######################
