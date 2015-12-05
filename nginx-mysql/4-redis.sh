@@ -22,6 +22,8 @@ sed -i 's/tcp-keepalive 0/tcp-keepalive 60/' /etc/redis.conf
 #sed -i 's/# requirepass foobared/requirepass passw0rd/g' /etc/redis.conf
 sed -i 's/# maxclients 10000/maxclients 10000/' /etc/redis.conf
 
+/usr/local/redis/redis-server /etc/redis.conf
+
 ######################
 #
 # start:
