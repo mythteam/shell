@@ -1,6 +1,6 @@
 #!/bin/bash
 
-soft=mysql-5.6.26
+soft=mysql-5.6.27
 softPkg=$soft.tar.gz
 
 
