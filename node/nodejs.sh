@@ -13,5 +13,7 @@ rm -f $pkg.tar.gz
 mv $pkg nodejs
 
 
-ln -s /usr/local/nodejs/bin/node /usr/local/bin/node
-ln -s /usr/local/nodejs/bin/npm /usr/local/bin/npm
+#ln -s /usr/local/nodejs/bin/node /usr/local/bin/node
+#ln -s /usr/local/nodejs/bin/npm /usr/local/bin/npm
+
+PATH=$PATH:/usr/local/nodejs/bin
