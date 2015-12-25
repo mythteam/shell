@@ -1,0 +1,67 @@
+#设置一个自己用的表,
+
+#允许ping
+
+#允许ssh
+
+#允许 web
+
+#允许mysql
+
+#允许 ftp
+
+#允许dns查询
+
+#其他的拒绝.脚本如下
+
+# Firewall configuration written by system-config-securitylevel
+
+# Manual customization of this file is not recommended.
+
+*filter
+
+:INPUT ACCEPT [0:0]
+
+:FORWARD ACCEPT [0:0]
+
+:OUTPUT ACCEPT [0:0]
+
+:MY-Firewall-1-INPUT - [0:0]
+
+-A INPUT -j MY-Firewall-1-INPUT
+
+-A FORWARD -j MY-Firewall-1-INPUT
+
+-A MY-Firewall-1-INPUT -i lo -j ACCEPT
+
+-A MY-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 53 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -m state --state NEW -m udp -p udp --dport 53 -j ACCEPT
+
+-A MY-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+
+COMMIT
+
+# 这样的话是所有人都可以连,但是有的时候22端口 或者3306端口希望指定的ip才能访问
+
+# 可以用
+
+# -A MY-Firewall-1-INPUT–s 1.2.3.4 –p tcp–dport 22 –j ACCEPT
+
+# 这样就限制了只有1.2.3.4这个ip才能连接22端口了.
+
+# save `iptables` to `/etc/sysconfig/ip6tables`
+# service iptables restart
+# iptables -L -n
