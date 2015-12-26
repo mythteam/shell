@@ -1,6 +1,6 @@
 #!/bin/bash
 
-soft=mysql-5.6.26
+soft=mysql-5.6.27
 softPkg=$soft.tar.gz
 
 
@@ -40,7 +40,7 @@ ln -s /usr/local/mysql/include/mysql /usr/include/mysql
 #
 # Then go to /usr/local/mysql and execute
 # cd /usr/local/mysql
-# ./scripts/mysql_install_db --user=mysql #Generate mysql system database
+# ./scripts/mysql_install_db --user=mysql --datadir=/data/mysql --basedir=/usr/local/mysql #Generate mysql system database
 #
 ######################
 
