@@ -46,15 +46,14 @@ mkdir -p /usr/local/php
 --enable-sockets \
 --with-xmlrpc \
 --enable-zip \
---enable-soap \
 --with-pear \
 --with-gettext \
 --enable-session \
 --with-mcrypt \
 --with-curl \
---disable-fileinfo \
 --enable-opcache \
 --enable-cli
+--disable-debug
 
 make
 make install

@@ -8,8 +8,8 @@ intl=$intlVer.tgz
 # install
 cd $dest
 
-wget http://download.icu-project.org/files/icu4c/56.1/$icu
-wget https://raw.githubusercontent.com/mythteam/shell/master/pkgs/intl-3.0.0.tgz
+wget https://raw.githubusercontent.com/mythteam/shell/master/pkgs/$icu
+wget https://raw.githubusercontent.com/mythteam/shell/master/pkgs/$intl
 
 # install icu
 tar zxvf $icu
