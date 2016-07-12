@@ -1,6 +1,6 @@
 #!/bin/bash
 
-soft=mysql-5.6.27
+soft=mysql-5.7.12
 softPkg=$soft.tar.gz
 
 
@@ -12,7 +12,7 @@ chown -R mysql:mysql /data/mysql
 mkdir -p /usr/local/mysql
 
 cd /usr/local/src/
-wget http://mirrors.sohu.com/mysql/MySQL-5.6/$softPkg
+wget http://mirrors.sohu.com/mysql/MySQL-5.7/$softPkg
 tar zxvf $softPkg
 cd $soft
 
