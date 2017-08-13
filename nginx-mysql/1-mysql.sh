@@ -1,4 +1,5 @@
 #!/bin/bash
+yum -y install cmake ncurses-devel libaio bison boost gcc-c++ gcc
 
 soft=mysql-5.7.17
 softPkg=$soft.tar.gz
