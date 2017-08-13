@@ -1,6 +1,6 @@
 #!/bin/bash
 
-soft=php-5.6.13
+soft=php-7.1.8
 softPkg=$soft.tar.gz
 
 
