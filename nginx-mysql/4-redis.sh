@@ -1,6 +1,6 @@
 #!/bin/bash
 
-soft=redis-2.8.23
+soft=redis-4.0.1
 softPkg=$soft.tar.gz
 
 cd /usr/local/src
