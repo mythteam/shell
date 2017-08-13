@@ -24,7 +24,6 @@ mkdir -p /usr/local/php
 
 ./configure --prefix=/usr/local/php \
 --with-config-file-path=/usr/local/php/etc \
---with-mysql=/usr/local/mysql \
 --with-mysqli=/usr/local/mysql/bin/mysql_config \
 --with-pdo-mysql \
 --with-freetype-dir \
