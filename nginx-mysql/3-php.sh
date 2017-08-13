@@ -51,8 +51,9 @@ mkdir -p /usr/local/php
 --with-mcrypt \
 --with-curl \
 --enable-opcache \
---enable-cli
---disable-debug
+--enable-cli \
+--disable-debug \
+--enable-intl
 
 make
 make install
