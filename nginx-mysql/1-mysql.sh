@@ -1,5 +1,13 @@
 #!/bin/bash
-yum -y install cmake ncurses-devel libaio bison boost gcc-c++ gcc
+yum -y install cmake ncurses-devel libaio bison gcc-c++ gcc
+
+#boost
+#wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
+#tar -xf boost_1_64_0.tar.gz
+#cd boost_1_64_0
+#./bootstrap.sh
+#./b2 install
+
 
 soft=mysql-5.7.17
 softPkg=$soft.tar.gz
@@ -13,11 +21,13 @@ chown -R mysql:mysql /data/mysql
 mkdir -p /usr/local/mysql
 
 cd /usr/local/src/
+
+ 
 wget http://mirrors.sohu.com/mysql/MySQL-5.7/$softPkg
 tar zxvf $softPkg
 cd $soft
 
-cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/data/mysql -DSYSCONFDIR=/etc
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/data/mysql -DSYSCONFDIR=/etc -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/boost
 make
 make install
 cd /usr/local/mysql
