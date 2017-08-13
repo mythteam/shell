@@ -1,7 +1,7 @@
 #!/bin/bash
 
 name=imagick
-version=3.1.1
+version=3.4.3
 fullname=$name-$version
 softPkg=$fullname.tar.gz
 
